@@ -28,14 +28,10 @@ Login_test
 
 * **실행 결과 콘솔 캡쳐**
 
-|유효성 검증|로그인 성공|로그인 실패|
-| ------ | ------ |------ |
-|<img width="573" height="57" alt="image" src="https://github.com/user-attachments/assets/9cd19cd3-cf67-4b58-b233-84b9fe830745" />||<img width="1104" height="244" alt="image" src="https://github.com/user-attachments/assets/5faa2a9b-97c1-4d03-854b-3fb26a39611c" />|
-
-|유효성 검증|로그인 성공|
+|동작|캡쳐 스크린샷|
 | ------ | ------ |
 |유효성 검증|<img width="573" height="57" alt="image" src="https://github.com/user-attachments/assets/9cd19cd3-cf67-4b58-b233-84b9fe830745" />|
-|로그인 성공||
+|로그인 성공|<img width="1209" height="322" alt="image" src="https://github.com/user-attachments/assets/dff12356-cd46-4bee-9b70-d8fa956157c3" />|
 |로그인 실패|<img width="1104" height="244" alt="image" src="https://github.com/user-attachments/assets/5faa2a9b-97c1-4d03-854b-3fb26a39611c" />|
 
 
