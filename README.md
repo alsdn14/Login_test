@@ -1,10 +1,12 @@
-## 1. AI 도구 활용 과정
-* **사용 도구** : Chat GPT5 
-* **프롬프트 및 AI 응답 원본 전체** : https://chatgpt.com/share/68945fb4-2328-8000-8c2d-3b5f367a4205  
-## 2. 자동화 스크립트 작성
+## 웹 로그인 자동화 테스트
 
+## 1. AI 도구 활용 과정
+* **사용 도구** : Chat GPT5 + Cursor
+* **프롬프트 및 AI 응답 원본 전체** : [Chat GPT 응답 원본 전체 링크](https://chatgpt.com/share/689df4fc-1438-8000-be2b-627eb8dc7fd0)  
 * **선택 브라우저**: Chrome (WebDriver 기반)
 * **사용 도구 및 언어** ( Python + Selenium )
+
+## 2. 자동화 스크립트 작성
 * **모듈 구조**
 
 Login_test  
@@ -16,33 +18,60 @@ Login_test
 
 | 파일명 | 역할 및 내용 |
 | ------ | ------ |
-|main.py|실제 실행되는 파일입니다. 사용자로부터 아이디/비밀번호를 입력받고 login_executor.run_login() 함수를 호출하여 자동화 테스트를 시작합니다.|
-|login_executor.py|로그인 자동화의 핵심 로직이 들어있는 모듈입니다. Selenium을 사용해 웹 페이지 접근, 로그인 시도, 성공/실패 상태를 단계별로 처리합니다.|
-|xpaths.py|로그인 자동화 과정에서 사용하는 XPath 들을 변수로 모아둔 모듈입니다.|
-|driver_manager.py|크롬 드라이버의 초기 설정을 담당하는 모듈입니다. 이곳에서 브라우저 옵션을 조정할 수 있습니다.|
-|log_config.py|로깅 설정을 모듈화한 파일입니다. 함수로 로거 객체를 초기화하고, 핸들러(콘솔 및 파일), 로그 포맷 등을 설정합니다.|
-
+|main.py|메인 실행 파일 (유효성 검사 + 로그인 실행)|
+|config.py |사이트 URL, XPath, 대기 시간, 로그 경로 설정|
+|driver_manager.py|크롬 드라이버 및 WebDriverWait 생성|
+|login_service.py|콘솔+파일 로그 기록 설정|
+|logger.py|로깅 설정을 모듈화한 파일입니다. 함수로 로거 객체를 초기화하고, 핸들러(콘솔 및 파일), 로그 포맷 등을 설정합니다.|
+|logs|실행 시 생성되는 로그 파일 저장 폴더|
 
 
 ## 3. 자동화 실행 결과
+
+* **실행 흐름 요약**
+```
+[사용자 입력]
+    ↓
+[main.py]
+  1. 로거(Logger) 생성 → logs 폴더에 파일 저장 준비
+  2. 아이디/비밀번호 입력 받음
+  3. 유효성 검증 수행
+     ├─ 아이디: 영어 소문자 + 숫자, 6~16자
+     ├─ 비밀번호: 영어 대소문자 + 숫자 + 특수문자, 8~16자
+     └─ 미입력/형식 오류 시 프로그램 종료
+    ↓
+[driver_manager.py]
+  4. ChromeDriver 자동 설치 및 실행
+  5. WebDriverWait 객체 생성
+    ↓
+[login_service.py]
+  6. BASE_URL 접속
+  7. 마이페이지 버튼 클릭
+  8. 아이디/비밀번호 입력
+  9. 로그인 버튼 클릭
+ 10. 로그인 성공/실패 판별
+     ├─ 경고 창 발생 → 실패 처리
+     ├─ URL에 "/personal/mypage" 포함 → 성공 처리
+     └─ 기타 → 실패 처리
+    ↓
+[logger.py]
+ 11. 각 단계별 결과를 콘솔 + 로그 파일에 기록
+    ↓
+[종료]
+```
+
 
 * **실행 결과 콘솔 캡쳐**
 
 |동작|캡쳐 스크린샷|
 | ------ | ------ |
-|유효성 검증|<img width="573" height="57" alt="image" src="https://github.com/user-attachments/assets/9cd19cd3-cf67-4b58-b233-84b9fe830745" />|
-|로그인 성공|<img width="1209" height="322" alt="image" src="https://github.com/user-attachments/assets/dff12356-cd46-4bee-9b70-d8fa956157c3" />|
-|로그인 실패|<img width="1104" height="244" alt="image" src="https://github.com/user-attachments/assets/5faa2a9b-97c1-4d03-854b-3fb26a39611c" />|
+|유효성 검증|<img width="765" height="243" alt="image" src="https://github.com/user-attachments/assets/bd4e5091-3f6f-4a05-864f-45df67926985" />|
+|로그인 성공|<img width="511" height="120" alt="image" src="https://github.com/user-attachments/assets/a421ac0f-8012-432b-8966-dce5cd8dd2bb" />|
+|로그인 실패|<img width="897" height="119" alt="image" src="https://github.com/user-attachments/assets/246e8904-dcc4-446d-8d58-07ea028db5ff" />|
 
 
 
-* **실행 흐름 요약**
-
-1. 로그 실행 시작: main.py에서 사용자 입력을 받고 run_login(...) 호출  
-2. 로그 설정 적용: log_config.py를 통해 로거가 초기화되어 각 단계 메시지가 로깅됨  
-3. 드라이버 준비: driver_manager.py 로 크롬 브라우저 생성  
-4. 자동화 흐름 진행: login_executor.py가 페이지 접속 → 입력 → 로그인 → 결과 확인까지 단계별 실행  
-5. XPath 관리: xpaths.py를 통해 코드에 하드코딩 대신 중앙 집중식 XPath 관리  
+</details>
 
 
 ## 4. 테스트 케이스 도출
