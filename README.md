@@ -1,5 +1,5 @@
 ## 1. AI 도구 활용 과정
-* **사용 도구** : Chat GPT-4o  
+* **사용 도구** : Chat GPT5 
 * **프롬프트 및 AI 응답 원본 전체** : https://chatgpt.com/share/68945fb4-2328-8000-8c2d-3b5f367a4205  
 ## 2. 자동화 스크립트 작성
 
@@ -9,10 +9,10 @@
 
 Login_test  
 ├── driver_manager.py  
-├── log_config.py  
-├── login_executor.py  
+├── logger.py  
+├── login_service.py  
 ├── main.py  
-└── xpaths.py
+└── config.py
 
 | 파일명 | 역할 및 내용 |
 | ------ | ------ |
