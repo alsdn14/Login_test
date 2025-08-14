@@ -13,8 +13,9 @@ Login_test
 ├── driver_manager.py  
 ├── logger.py  
 ├── login_service.py  
-├── main.py  
-└── config.py
+├── main.py 
+├── config.py
+└── logs
 
 | 파일명 | 역할 및 내용 |
 | ------ | ------ |
