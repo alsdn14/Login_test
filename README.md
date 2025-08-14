@@ -23,7 +23,7 @@ Login_test
 |config.py |사이트 URL, XPath, 대기 시간, 로그 경로 설정|
 |driver_manager.py|크롬 드라이버 및 WebDriverWait 생성|
 |login_service.py|콘솔+파일 로그 기록 설정|
-|logger.py|로깅 설정을 모듈화한 파일입니다. 함수로 로거 객체를 초기화하고, 핸들러(콘솔 및 파일), 로그 포맷 등을 설정합니다.|
+|logger.py|로깅 설정을 모듈화한 파일입니다.   함수로 로거 객체를 초기화하고, 핸들러(콘솔 및 파일), 로그 포맷 등을 설정합니다.|
 |logs|실행 시 생성되는 로그 파일 저장 폴더|
 
 
