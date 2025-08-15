@@ -77,8 +77,10 @@ Login_test
 
 ## 4. 테스트 케이스 도출
 
+* [테스트 케이스 Google Sheets 링크](https://docs.google.com/spreadsheets/d/1gex_49dmtCSYjZ25_9sFOxttJ206sqEgJQkgpPU2cKg/edit?gid=1803579238#gid=1803579238)  
+  
 <details><summary>테스트케이스 펼쳐 보기</summary>
-ㅇㅇ
+<img width="2161" height="621" alt="image" src="https://github.com/user-attachments/assets/a64f8efc-6311-4534-b418-79ea71362c35" />
 </details>
 
 ## 5. 결과물 검토 및 보완 설명
