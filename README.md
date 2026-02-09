@@ -71,7 +71,6 @@ Login_test
 |로그인 실패|<img width="897" height="119" alt="image" src="https://github.com/user-attachments/assets/246e8904-dcc4-446d-8d58-07ea028db5ff" />|
 
 
-
 </details>
 
 
